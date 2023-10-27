@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Previsão do Tempo</h1>
+    <form method="POST">
+        <input type="text" name="cidade" placeholder="Digite o nome da cidade">
+        <input type="submit" value="Obter Previsão">
+    </form>
+    {% if clima %}
+        <h2>Previsão para {{ clima['cidade'] }}</h2>
+        <p>Temperatura: {{ clima['temperatura'] }}°C</p>
+        <p>Descrição: {{ clima['descricao'] }}</p>
+        <img src="http://openweathermap.org/img/wn/{{ clima['icon'] }}.png">
+    {% endif %}
+</body>
+</html>
